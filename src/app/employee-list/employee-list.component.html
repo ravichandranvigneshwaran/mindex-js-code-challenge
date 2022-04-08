@@ -1,6 +1,8 @@
 <div class="container">
   <div class="employee-list">
+    <div class="container">
   <div *ngFor="let emp of employees">
     <app-employee (onDeleteClick)="deleteClickHander($event)" [employee]="emp"></app-employee>
   </div>
+</div>
 </div>

@@ -12,10 +12,10 @@
             </tr>
           </thead>
           <tbody class="table-body" *ngIf="employee.directReports?.length > 0; else elseBlock">
-            <tr  *ngFor="let dr of employee.directReportsDetails;let indexOfelement=index">
+            <tr *ngFor="let dr of employee.directReportsDetails;let indexOfelement=index">
               <td class="row">
                 <div class="col-sm-11">{{dr.lastName}}, {{dr.firstName}}, {{dr.position}}</div>
-                <div class=" col-sm-1">
+                <div class=" col-sm-1 action-button">
                 <button mat-icon-button (click)="openDialog({type:'edit',index:indexOfelement})" color="primary" aria-label="Example icon button with a home icon">
                   <mat-icon>edit</mat-icon>
                 </button>

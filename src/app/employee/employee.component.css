@@ -7,22 +7,24 @@
     font-weight: normal;
 }
 .divider{
-    border: 1px solid black;
+    border: 1px solid #ECECEC;
     margin: 20px 0px;
 }
 .employee-title{
-    color: blue;
+    color: #0066BA;
+    font-weight: 600;
     padding: 15px 0px;
 }
 .directReports{
     padding:20px;
 }
+.table-body .row{
+    margin: 0px;
+}
 .table-body td{
     padding: 20px 0px 20px 20px;
+    background-color: #F8F9FA;
 }
-.table-body td .table-align-left{
-    text-align: left;
-}
-.table-body td .table-align-right{
-    text-align: right;
+.action-button{
+    padding: 0px;
 }
