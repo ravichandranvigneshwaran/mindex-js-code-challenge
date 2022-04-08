@@ -1,0 +1,73 @@
+<div class="container" *ngIf="data.type === 'delete'; else elseBlock">
+    <div class="delete-dialog">
+        <div class="delete-dialog-header">
+            DELETE DIRECT REPORT
+        </div>
+        <div class="delete-dialog-body">
+            <p>Permanently delete direct report</p>
+            <p>{{data.firstName}} {{data.lastName}}?</p>
+            <p>This action cannot be undone.</p>
+        </div>
+        <div class="delete-dialog-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button (click)="data.emitFun({type:'delete',index:data.index})">
+                            OK
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button (click)="onNoClick()">
+                            CANCEL
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <ng-template #elseBlock>
+        <div class="container">
+            <div class="edit-dialog">
+                <div class="edit-dialog-header">
+                    UPDATE COMPENSATION
+                </div>
+                <div class="edit-dialog-body">
+                    <form class="compensation-form">
+                        <fieldset class="border">
+                           <legend  class="float-none w-auto">First Name</legend>
+                           <input type="text" name="firstName" value="{{data.firstName}}" disabled readonly />
+                        </fieldset>
+                        <fieldset class="border">
+                            <legend  class="float-none w-auto">Last Name</legend>
+                            <input type="text" name="lastName" value="{{data.lastName}}" disabled readonly/>
+                         </fieldset>
+                         <fieldset class="border">
+                            <legend  class="float-none w-auto">Title</legend>
+                            <input type="text" name="position" value="{{data.position}}" disabled readonly/>
+                         </fieldset>
+                         <fieldset class="border">
+                            <legend  class="float-none w-auto">Compensation <span>*</span> </legend>
+                            <input type="text" name="compensation" matInput [(ngModel)]="compensation" value="{{data.compensation}}">
+                         </fieldset>
+                    </form>
+                </div>
+                <div class="edit-dialog-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <button (click)="onEditClick({myFun:data.emitFun,index:data.index})">
+                                    SAVE
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button (click)="onNoClick()">
+                                    CANCEL
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>

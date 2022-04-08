@@ -1,12 +1,36 @@
-<mat-card class="employee">
-  <mat-card-header>
-    <mat-card-title>{{employee.lastName}}, {{employee.firstName}}</mat-card-title>
-    <mat-card-subtitle>{{employee.id}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <dl>
-      <dt>Job Title</dt>
-      <dd>{{employee.position}}</dd>
-    </dl>
-  </mat-card-content>
-</mat-card>
+<div class="employee">
+  <div class="row">
+    <div class="col">
+      <div class="employee-title">{{employee.lastName}}, {{employee.firstName}}, {{employee.position}}</div>
+      <div>Employee ID: {{employee.id}} | Direct Reports: {{employee.directReportCount}}</div>
+      <div class="divider"></div>
+      <div class="directReports">
+        <table class="table table-borderless">
+          <thead class="table-header">
+            <tr>
+              <th class="table-header-title" >Direct Reports</th>
+            </tr>
+          </thead>
+          <tbody class="table-body" *ngIf="employee.directReports?.length > 0; else elseBlock">
+            <tr  *ngFor="let dr of employee.directReportsDetails;let indexOfelement=index">
+              <td class="row">
+                <div class="col-sm-11">{{dr.lastName}}, {{dr.firstName}}, {{dr.position}}</div>
+                <div class=" col-sm-1">
+                <button mat-icon-button (click)="openDialog({type:'edit',index:indexOfelement})" color="primary" aria-label="Example icon button with a home icon">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="openDialog({type:'delete',index:indexOfelement})" color="primary" aria-label="Example icon button with a home icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                </div>
+              </td>
+              
+            </tr>
+          </tbody>
+          <ng-template #elseBlock>
+            <tbody class="table-body"><td>This employee has no reports.</td></tbody></ng-template> 
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
