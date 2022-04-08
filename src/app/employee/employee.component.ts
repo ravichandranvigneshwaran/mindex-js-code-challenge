@@ -9,13 +9,16 @@ import { ActionDialogComponent } from '../action-dialog/action-dialog.component'
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent {
+  //Note: Employee input variable declaration
   @Input() employee: Employee;
 
+  //Note: Event emitter for dialog actions
   @Output() onDialogClick: EventEmitter<Object> = new EventEmitter<Object>();
 
   constructor(public dialog: MatDialog) {
   };
 
+  //NOTE: open the dialog with data
   openDialog(data): void {
     var clickedData = this.employee['directReportsDetails'][data.index];
     const deleteDialogRef = this.dialog.open(ActionDialogComponent, {

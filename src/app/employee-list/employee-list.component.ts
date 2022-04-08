@@ -16,6 +16,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {
   }
 
+  //NOTE: This method runs when component mount of DOM
   ngOnInit(): void {
     this.employeeService.getAll()
       .pipe(
@@ -25,6 +26,8 @@ export class EmployeeListComponent implements OnInit {
       ).subscribe(() => { this.mapDirectReports() });
 
   }
+
+  //NOTE: Function to covert directReports id to whole Employee details 
   private mapDirectReports(): void {
     var directReportsDetails = [];
     var directReportsCount = [];
@@ -46,6 +49,8 @@ export class EmployeeListComponent implements OnInit {
     })
 
   }
+
+  //NOTE: Function to find the number of direct reports
   private findNumberofReports(employee, employee2): void {
     employee2.push(employee);
     var newEmps = this.employees[employee - 1];
@@ -56,6 +61,7 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
+  //NOTE: delete direct report employee function
   private deleteEmpFunction(data, index): void {
     data['directReports'].splice(index, 1);
     const empData = {
@@ -68,6 +74,8 @@ export class EmployeeListComponent implements OnInit {
     };
     this.employeeService.save(empData).subscribe(() => this.ngOnInit());
   }
+
+  //NOTE: edit compensation direct report employee function
   private editEmpFunction(data, compensation, index): void {
     const selectEmp = data.directReportsDetails[index];
 
@@ -82,6 +90,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.save(empData).subscribe(() => this.ngOnInit());
   }
 
+  //NOTE: dialogclick from child to parent method
   private dialogClickHandler(data): void {
     if (data.type == 'delete')
       this.deleteEmpFunction(data.emp, data.index);
