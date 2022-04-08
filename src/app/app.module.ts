@@ -15,15 +15,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ActionDialogComponent } from './action-dialog/action-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    DeleteDialogComponent
+    ActionDialogComponent
   ],
   imports: [
     BrowserModule,

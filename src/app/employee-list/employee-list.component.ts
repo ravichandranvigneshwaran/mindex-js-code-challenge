@@ -82,7 +82,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.save(empData).subscribe(() => this.ngOnInit());
   }
 
-  private deleteClickHander(data): void {
+  private dialogClickHandler(data): void {
     if (data.type == 'delete')
       this.deleteEmpFunction(data.emp, data.index);
     else if (data.type == 'edit')
